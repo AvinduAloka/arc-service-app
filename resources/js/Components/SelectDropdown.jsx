@@ -1,0 +1,18 @@
+// resources/js/components/SelectDropdown.jsx
+
+import React from 'react';
+
+const SelectDropdown = ({ options, onChange, value }) => {
+    return (
+        <select value={value} onChange={onChange} className="rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 dark:border-gray-700 dark:bg-gray-900 dark:text-gray-300 dark:focus:border-indigo-600 dark:focus:ring-indigo-600">
+            <option value="">Select an option</option>
+            {options.map((option, index) => (
+                <option key={index} value={option.value}>
+                    {option.label}
+                </option>
+            ))}
+        </select>
+    );
+};
+
+export default SelectDropdown;
