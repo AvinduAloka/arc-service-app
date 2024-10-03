@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
 {
@@ -22,6 +23,10 @@ class AdminController extends Controller
     // Handle the add user form submission
     public function addUser(Request $request)
     {
+        if (!Auth::check()) {
+            return redirect()->route('login')->with('message', 'Please log in to add users.');
+        }
+
         $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',

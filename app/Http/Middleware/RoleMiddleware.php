@@ -30,7 +30,10 @@ class RoleMiddleware
             else if ($userRole === 'tech') {
                 return redirect()->route('tdashboard')->with('message', 'Welcome to Admin Dashboard');
             }
-            return redirect()->route('dashboard')->with('message', 'Access Denied');
+            else if($userRole === 'user'){
+                return redirect()->route('dashboard')->with('message', 'Access Denied');
+            }
+            return redirect()->back()->with('message', 'Access Denied');
         }
 
         return $next($request);
