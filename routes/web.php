@@ -15,11 +15,19 @@ Route::get('/', function () {
     ]);
 });
 
-Route::get('/AdminDashBoard', function () {
+Route::get('/dashboard/Admin', function () {
     return Inertia::render('AdminDashBoard');
 })->middleware(['auth', 'verified', 'role:admin'])->name('admindash');
 
-Route::get('/dashboard', function () {
+Route::get('/dashboard/Reception', function () {
+    return Inertia::render('RecepDashBoard');
+})->middleware(['auth', 'verified', 'role:recap'])->name('rdashboard');
+
+Route::get('/dashboard/Technician', function () {
+    return Inertia::render('TechDashBoard');
+})->middleware(['auth', 'verified', 'role:tech'])->name('tdashboard');
+
+Route::get('/dashboard/Customer', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified', 'role:user'])->name('dashboard');
 

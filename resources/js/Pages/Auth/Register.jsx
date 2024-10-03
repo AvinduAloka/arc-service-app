@@ -24,8 +24,10 @@ export default function Register() {
     };
 
     const roleOptions = [
-        { value: 'user', label: 'User' },
         { value: 'admin', label: 'Admin' },
+        { value: 'recap', label: 'recap' },
+        { value: 'tech', label: 'tech' },
+        { value: 'user', label: 'User' },
         // Add more roles as needed
     ];
 
