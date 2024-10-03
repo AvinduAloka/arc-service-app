@@ -3,14 +3,16 @@ import { Link } from '@inertiajs/react';
 
 export default function Guest({ children }) {
     return (
-        <div className="flex min-h-screen flex-col items-center bg-gray-100 pt-6 sm:justify-center sm:pt-0 dark:bg-gray-900">
-            <div>
-                <Link href="/">
-                    <ApplicationLogo className="h-20 w-20 fill-current text-gray-500" />
-                </Link>
-            </div>
+        <div className="background-layout">
 
-            <div className="mt-6 w-full overflow-hidden bg-white px-6 py-4 shadow-md sm:max-w-md sm:rounded-lg dark:bg-gray-800">
+            <div className="w-25 ">
+                <div className="container-fluid p-0 m-0">
+                    <div className='d-flex justify-content-start'>
+                        <h1 className='p-0 m-0'>Log In</h1>
+                        <h1 className='p-0 m-0 text-Decoration-icon ms-2'>Arc</h1>
+                    </div>
+                    <p className='form-text p-0 m-0 my-1 mb-3'>Welcome to Arc Service Center. where exceptional service meets your needs!</p>
+                </div>
                 {children}
             </div>
         </div>

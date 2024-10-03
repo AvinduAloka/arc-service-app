@@ -5,6 +5,7 @@ import TextInput from '@/Components/TextInput';
 import SelectDropdown from '@/Components/SelectDropdown'; // Import the SelectDropdown component
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 export default function Register() {
     const { data, setData, post, processing, errors, reset } = useForm({
