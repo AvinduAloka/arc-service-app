@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
+use App\Http\Middleware\RoleMiddleware;
 use Inertia\Inertia;
 
 Route::get('/', function () {
@@ -14,9 +15,14 @@ Route::get('/', function () {
     ]);
 });
 
+Route::get('/AdminDashBoard', function () {
+    return Inertia::render('AdminDashBoard');
+})->middleware(['auth', 'verified', 'role:admin'])->name('admindash');
+
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified', 'role:user'])->name('dashboard');
+
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
