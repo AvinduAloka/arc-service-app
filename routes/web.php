@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
@@ -16,7 +17,7 @@ Route::get('/', function () {
 });
 
 Route::get('/dashboard/Admin', function () {
-    return Inertia::render('AdminDashBoard');
+    return Inertia::render('Admin/AdminDashBoard');
 })->middleware(['auth', 'verified', 'role:admin'])->name('admindash');
 
 Route::get('/dashboard/Reception', function () {
@@ -30,6 +31,10 @@ Route::get('/dashboard/Technician', function () {
 Route::get('/dashboard/Customer', function () {
     return Inertia::render('Dashboard');
 })->middleware(['auth', 'verified', 'role:user'])->name('dashboard');
+
+// Route for adding a new user
+Route::get('/admin/add-user', [AdminController::class, 'showAddUserForm'])->name('Admin.RegisterAdmin');
+Route::post('/admin/add-user', [AdminController::class, 'addUser'])->name('admin.storeUser');
 
 
 Route::middleware('auth')->group(function () {

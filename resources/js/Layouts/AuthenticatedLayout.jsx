@@ -13,7 +13,7 @@ export default function Authenticated({ header, children }) {
 
     return (
         <div className="min-vh-100 bg-white">
-            <nav className="navbar navbar-expand-lg navbar-light bg-white border-bottom">
+            <nav className="navbar sticky-top navbar-expand-lg navbar-light bg-white border-bottom">
                 <div className="container-fluid px-5">
                     <Link href="/" className="navbar-brand">
                         <ApplicationLogo className="h-9 w-auto" />
@@ -30,17 +30,28 @@ export default function Authenticated({ header, children }) {
                     </button>
 
                     <div className={`collapse navbar-collapse ${showingNavigationDropdown ? 'show' : ''}`} id="navbarNav">
-                        <ul className="navbar-nav me-auto">
-                            <NavLink
-                                href={route('dashboard')}
-                                className="nav-link text-decoration-none"
-                                active={route().current('dashboard')}
-                            >
-                                Dashboard
-                            </NavLink>
-                        </ul>
-                        <ul className="navbar-nav me-auto">
-
+                        <ul className="navbar-nav me-auto mt-2 mt-lg-0 d-flex align-items-end">
+                            <li className='nav-item'>
+                                <NavLink
+                                    href={route('dashboard')}
+                                    className="nav-link text-decoration-none"
+                                    active={route().current('dashboard')}
+                                >
+                                    Dashboard
+                                </NavLink>
+                            </li>
+                            <li className='nav-item'>
+                                {/* Conditional NavLink for Admin */}
+                                {user.role === 'admin' && (
+                                    <NavLink
+                                        href={route('Admin.RegisterAdmin')}
+                                        className={`nav-link text-decoration-none normal-nav-link mx-3 ${route().current('Admin.RegisterAdmin') ? 'active' : ''}`}
+                                        active={route().current('Admin.RegisterAdmin')}
+                                    >
+                                        Add User
+                                    </NavLink>
+                                )}
+                            </li>
                         </ul>
 
 
@@ -48,7 +59,7 @@ export default function Authenticated({ header, children }) {
                             <Dropdown>
                                 <Dropdown.Trigger>
                                     <button
-                                        className="btn btn-outline-secondary dropdown-toggle "
+                                        className="btn btn-outline-dark dropdown-toggle "
                                         type="button"
                                         id="dropdownMenuButton"
                                         data-bs-toggle="dropdown"
@@ -75,7 +86,9 @@ export default function Authenticated({ header, children }) {
                 </header>
             )}
 
-            <main className="container">{children}</main>
+            <main className="container">
+                {children}
+            </main>
         </div>
     );
 }
