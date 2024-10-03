@@ -92,6 +92,11 @@ export default function Login({ status, canResetPassword }) {
                 <PrimaryButton className="form-control py-2" disabled={processing}>
                     Log in
                 </PrimaryButton>
+                <div className='my-3 text-center'>
+                    <Link className='text-black text-decoration-none' href='/'>
+                    Go Back
+                    </Link>
+                </div>
             </form>
         </GuestLayout>
     );
