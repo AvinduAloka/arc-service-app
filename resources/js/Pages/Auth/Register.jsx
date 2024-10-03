@@ -2,6 +2,7 @@ import InputError from '@/Components/InputError';
 import InputLabel from '@/Components/InputLabel';
 import PrimaryButton from '@/Components/PrimaryButton';
 import TextInput from '@/Components/TextInput';
+import SelectDropdown from '@/Components/SelectDropdown'; // Import the SelectDropdown component
 import GuestLayout from '@/Layouts/GuestLayout';
 import { Head, Link, useForm } from '@inertiajs/react';
 
@@ -11,15 +12,22 @@ export default function Register() {
         email: '',
         password: '',
         password_confirmation: '',
+        role: '', // New field for the role
     });
 
     const submit = (e) => {
         e.preventDefault();
 
         post(route('register'), {
-            onFinish: () => reset('password', 'password_confirmation'),
+            onFinish: () => reset('password', 'password_confirmation', 'role'),
         });
     };
+
+    const roleOptions = [
+        { value: 'user', label: 'User' },
+        { value: 'admin', label: 'Admin' },
+        // Add more roles as needed
+    ];
 
     return (
         <GuestLayout>
@@ -78,10 +86,7 @@ export default function Register() {
                 </div>
 
                 <div className="mt-4">
-                    <InputLabel
-                        htmlFor="password_confirmation"
-                        value="Confirm Password"
-                    />
+                    <InputLabel htmlFor="password_confirmation" value="Confirm Password" />
 
                     <TextInput
                         id="password_confirmation"
@@ -90,16 +95,25 @@ export default function Register() {
                         value={data.password_confirmation}
                         className="mt-1 block w-full"
                         autoComplete="new-password"
-                        onChange={(e) =>
-                            setData('password_confirmation', e.target.value)
-                        }
+                        onChange={(e) => setData('password_confirmation', e.target.value)}
                         required
                     />
 
-                    <InputError
-                        message={errors.password_confirmation}
-                        className="mt-2"
+                    <InputError message={errors.password_confirmation} className="mt-2" />
+                </div>
+
+                {/* New Role Select Dropdown */}
+                <div className="mt-4">
+                    <InputLabel htmlFor="role" value="Role" />
+
+                    <SelectDropdown
+                        id="role"
+                        options={roleOptions}
+                        value={data.role}
+                        onChange={(e) => setData('role', e.target.value)}
                     />
+
+                    <InputError message={errors.role} className="mt-2" />
                 </div>
 
                 <div className="mt-4 flex items-center justify-end">
