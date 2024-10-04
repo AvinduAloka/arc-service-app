@@ -16,10 +16,21 @@ Route::get('/', function () {
     ]);
 });
 
+/*Admin*/
 Route::get('/dashboard/Admin', function () {
     return Inertia::render('Admin/AdminDashBoard');
 })->middleware(['auth', 'verified', 'role:admin'])->name('admindash');
 
+Route::get('/dashboard/Admin/User/Address/Reg', function () {
+    return Inertia::render('Admin/Pages/AddressReg');
+})->middleware(['auth', 'verified', 'role:admin'])->name('admin.Address.Reg');
+
+Route::get('/dashboard/Admin/User/Normal/Reg', function () {
+    return Inertia::render('Admin/Pages/RegisterAdmin');
+})->middleware(['auth', 'verified', 'role:admin'])->name('admin.User.Reg');
+
+
+/*Reception*/
 Route::get('/dashboard/Reception', function () {
     return Inertia::render('RecepDashBoard');
 })->middleware(['auth', 'verified', 'role:recap'])->name('rdashboard');

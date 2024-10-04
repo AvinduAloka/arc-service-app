@@ -130,57 +130,70 @@ body {
 
 .text-Decoration-icon {
     background: linear-gradient(#570000 0%, #0c00a7 51.23%, #000 100%);
-    -webkit-background-clip: text; /* For Safari */
-    -webkit-text-fill-color: transparent; /* For text color */
+    -webkit-background-clip: text;
+    /* For Safari */
+    -webkit-text-fill-color: transparent;
+    /* For text color */
 }
 
-.text-recap-h1{
+.text-recap-h1 {
     font-size: 80px !important;
 }
 
 /*Button*/
-.btn-primary{
+.btn-primary {
     background: rgb(0, 89, 255);
     padding: 10px 20px 10px 20px;
     border-radius: 10px;
     width: 100%;
 }
 
-.absolute{
+.absolute {
     position: absolute;
     right: 1px;
 }
 
-.drop-item-size{
+.drop-item-size {
     width: 140px !important;
     padding: 8px;
     text-decoration: none;
     color: black;
 }
 
-.drop-item-size:hover{
+.drop-item-size:hover {
     background: rgb(228, 228, 228);
 }
 
-.border-rado{
+.border-rado {
     border-radius: 8px !important;
     overflow: hidden !important;
 }
 
-.nav-link-size{
+.nav-link-size {
     font-size: 18px;
     color: black;
 }
 
-.normal-nav-link{
+.normal-nav-link {
     font-size: 16px !important;
 }
 
 .active {
-    color: #0d6efd !important; /* Change this to your desired active color */
+    color: #0d6efd !important;
+    /* Change this to your desired active color */
 }
 
 .img-cover {
     border-radius: 12px;
     overflow: hidden;
+}
+
+.bor-radio {
+    border-radius: 15px !important;
+}
+
+.sidebar {
+    position: sticky;
+    top: 20px; /* Space from the top of the viewport */
+    height: 10px; /* Adjust height as needed */
 }

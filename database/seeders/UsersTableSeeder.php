@@ -17,24 +17,28 @@ class UsersTableSeeder extends Seeder
             [
                 'name' => 'Admin User',
                 'email' => 'admin@example.com',
+                'nic' => '123456789123',
                 'password' => Hash::make('password123'), // Hash the password
                 'role' => 'admin',
             ],
             [
                 'name' => 'Recap User',
                 'email' => 'recap@example.com',
+                'nic' => '234567891123',
                 'password' => Hash::make('password123'),
                 'role' => 'recap',
             ],
             [
                 'name' => 'Tech User',
                 'email' => 'tech@example.com',
+                'nic' => '345678912123',
                 'password' => Hash::make('password123'),
                 'role' => 'tech',
             ],
             [
                 'name' => 'Regular User',
                 'email' => 'user@example.com',
+                'nic' => '456789123123',
                 'password' => Hash::make('password123'),
                 'role' => 'user',
             ],
